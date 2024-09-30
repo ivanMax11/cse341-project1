@@ -1,0 +1,32 @@
+### 1. To get all contacts
+GET http://localhost:3000/users
+Accept: application/json
+
+### 2. To get a contact for ID
+GET http://localhost:3000/users/66f772afb98fef0cd8cd22ce
+Accept: application/json
+
+### 3. Create a new contact
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "phone": "987654321",
+  "address": "456 Main St"
+}
+
+### 4. Update a contact
+PUT http://localhost:3000/users/66f772afb98fef0cd8cd22ce
+Content-Type: application/json
+
+{
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "phone": "987654321",
+  "address": "456 Main St, Suite 100"
+}
+
+### 5. Delete a contact
+DELETE http://localhost:3000/users/66f772afb98fef0cd8cd22ce
