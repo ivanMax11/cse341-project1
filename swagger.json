@@ -5,10 +5,10 @@
     "description": "Users Api",
     "version": "1.0.0"
   },
-  "host": "project1-2q97.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -21,10 +21,10 @@
         }
       }
     },
-    "/users/": {
+    "/contacts/": {
       "get": {
         "tags": [
-          "Users"
+          "Contacts"
         ],
         "description": "",
         "produces": [
@@ -33,12 +33,15 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
         "tags": [
-          "Users"
+          "Contacts"
         ],
         "description": "",
         "parameters": [
@@ -48,16 +51,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "phone": {
+                "favoriteColor": {
                   "example": "any"
                 },
-                "address": {
+                "birthday": {
                   "example": "any"
                 }
               }
@@ -77,10 +83,10 @@
         }
       }
     },
-    "/users/{id}": {
+    "/contacts/{id}": {
       "get": {
         "tags": [
-          "Users"
+          "Contacts"
         ],
         "description": "",
         "produces": [
@@ -97,69 +103,70 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-  "tags": [
-    "Users"
-  ],
-  "description": "Update a user",
-  "parameters": [
-    {
-      "name": "id",
-      "in": "path",
-      "required": true,
-      "type": "string"
-    },
-    {
-      "name": "body",
-      "in": "body",
-      "schema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "John Doe"
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "email": {
-            "type": "string",
-            "example": "john@example.com"
-          },
-          "phone": {
-            "type": "string",
-            "example": "123456789",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "example": "123 Main St",
-            "nullable": true
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoriteColor": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
+            }
           }
-        },
-        "required": [] 
-      }
-    }
-  ],
-  "responses": {
-    "200": {
-      "description": "OK"
-    },
-    "400": {
-      "description": "Bad Request"
-    },
-    "404": {
-      "description": "Not Found"
-    },
-    "500": {
-      "description": "Internal Server Error"
-    }
-  }
-},
-
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "delete": {
         "tags": [
-          "Users"
+          "Contacts"
         ],
         "description": "",
         "parameters": [

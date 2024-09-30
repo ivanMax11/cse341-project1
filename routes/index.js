@@ -1,10 +1,14 @@
 const router = require('express').Router();
 
+// Rutas para Swagger
 router.use('/', require('./swagger'));
 
-router.get('/', (req, res) => 
-    (res.send('Hello world!')));
+// Ruta principal de prueba
+router.get('/', (req, res) => {
+    res.send('Hello world!');
+});
 
-router.use('/users', require('./users'));
+// Rutas para manejar los contactos (antes era /users)
+router.use('/contacts', require('./contacts'));
 
-module.exports = router
+module.exports = router;
