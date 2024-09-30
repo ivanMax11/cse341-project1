@@ -46,18 +46,19 @@ const createContact = async (req, res) => {
 
 // Updating a contact 
 const updateContact = async (req, res) => {
-     //#swagger.tags=['Users']
     try {
         const contactId = new ObjectId(req.params.id);
-        const updatedContact = {
-            name: req.body.name,
-            email: req.body.email,
-            phone: req.body.phone,
-            address: req.body.address
-        };
+        
+        // Crear un objeto de actualización solo con los campos presentes
+        const updatedContact = {};
+        if (req.body.name) updatedContact.name = req.body.name;
+        if (req.body.email) updatedContact.email = req.body.email;
+        if (req.body.phone) updatedContact.phone = req.body.phone;
+        if (req.body.address) updatedContact.address = req.body.address;
 
-        if (!updatedContact.name || !updatedContact.email || !updatedContact.phone || !updatedContact.address) {
-            return res.status(400).json({ message: 'All fields are required.' });
+        // Verificar si al menos un campo fue enviado para actualizar
+        if (Object.keys(updatedContact).length === 0) {
+            return res.status(400).json({ message: 'At least one field is required for update.' });
         }
 
         const result = await mongodb.getDatabase().db().collection('contacts').updateOne(

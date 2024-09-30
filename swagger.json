@@ -101,54 +101,62 @@
         }
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
+  "tags": [
+    "Users"
+  ],
+  "description": "Update a user",
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "body",
+      "in": "body",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
           },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "phone": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                }
-              }
-            }
+          "email": {
+            "type": "string",
+            "example": "john@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "123456789",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "example": "123 Main St",
+            "nullable": true
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+        },
+        "required": [] 
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "500": {
+      "description": "Internal Server Error"
+    }
+  }
+},
+
       "delete": {
         "tags": [
           "Users"
